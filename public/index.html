@@ -1,0 +1,660 @@
+<!--The page is structured normally and after the head and links to bootstrap and favicon icons it has a navbar. This shows and displays all relevant sections. They are listed in this HTML document in the same order as in the navbar-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>NYSL Web App</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "style.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+      
+<link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="favicons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+<link rel="manifest" href="favicons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">           
+      
+  </head>
+  <body>
+<!--
+      
+      I'm going to put a navbar at the top here
+      
+-->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">NYSL</a>
+    </div>
+      
+<!--
+    
+      
+-->
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul id="navbarLinks" class="nav navbar-nav">
+       
+          <li class="active" id="homePage"><a data-toggle="collapse" data-target=".navbar-collapse" data-view="homePage" href="#">Home</a></li>
+        
+          <li id="myPlayersAndTeams"><a data-toggle="collapse" data-target=".navbar-collapse" data-view="playerReport" href="#">Players</a></li>
+          
+           <li id="myTeams"><a data-toggle="collapse" data-target=".navbar-collapse" data-view="teamReport" href="#">Teams</a></li>
+          
+        <li id="resultsLink"><a data-toggle="collapse" data-target=".navbar-collapse" data-view="results" href="#">Results</a></li> 
+          
+                    
+        <li><a data-toggle="collapse" data-target=".navbar-collapse" data-view="fixtures" href="#">Fxtures</a></li> 
+          
+         <li><a data-toggle="collapse" data-target=".navbar-collapse" data-view="matchReports" href="#">Match Reports</a></li>  
+          
+        <li><a data-toggle="collapse" data-target=".navbar-collapse" data-view="leageueTable" href="#">League Table</a></li>
+          
+        <li><a data-toggle="collapse" data-target=".navbar-collapse" data-view="about" href="#">About NYSL</a></li>
+            
+        <li><a data-toggle="collapse" data-target=".navbar-collapse" data-view="playerPerformanceData" href="#">Player Performance Data</a></li>
+      </ul>
+        
+      <ul id="navbarLinks2" class="nav navbar-nav navbar-right">
+        <li><a data-toggle="collapse" data-target=".navbar-collapse" data-view="loginPage" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          
+        <li><a data-toggle="collapse" data-target=".navbar-collapse" data-view="parentSignUp" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          </ul>
+    </div>
+  </div>
+</nav>
+<!--      This it the first section which is the home page-->
+      
+        
+<!--This is the homepage-->
+      
+      <div class="row section homePage">
+      <h1>Next Match</h1>
+    
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">  
+       
+          
+          <table class="table fixturesTable" id="nextMatchTable">
+              <tr>
+                <td>Home</td>
+                  <td>Away</td>
+              </tr>
+                  <tr>
+                <td id="homeLogo"></td>
+                  <td id="awayLogo"></td>
+              </tr>
+              <tr>
+                <td id="nextGameDate"></td>
+                  <td id="nextGameTime"></td>
+              </tr>
+              <tr>
+                <td colspan="2">   <div title="Add to Calendar" class="addeventatc">
+    Add to Calendar
+    <span class="start" id="startForCal"></span>
+    <span class="end" id="endForCal"></span>
+    <span class="timezone">America/Chicago</span>
+    <span class="title" id="summaryForCal">Summary of the event</span>
+    <span class="description" id="notesFromCoach"></span>
+    <span class="location"></span>
+</div></td>
+              </tr>
+              <tr>
+                <td id="nextGameAddress">Address</td>
+                <td id="nextGameMap"></td>
+              </tr>
+              <tr>
+                <td colspan="2" id="coachesNotes"></td>
+              </tr>
+          </table>
+     
+        <div id="buttonLinks">    
+  <div class="row">
+        
+        <div class="col-xs-6 smallLinkButton">
+        
+        
+        <button data-view="fixtures" type="button" class="btn btn-success">Full Schedule</button>
+      
+        </div>     
+            
+        <div class="col-xs-6 smallLinkButton">
+        
+        <button data-view="leageueTable" type="button" class="btn btn-success">League Table</button>    
+            
+        </div>
+        
+            </div>
+    
+       
+    <div class="row">
+        <div class="button-boxes">
+                
+        <div class="col-xs-4"></div>
+        
+        <div class="col-xs-4">
+        
+        <button data-view="loginPage" type="button" class="btn btn-success">LOGIN</button>
+        
+        </div>
+        
+        <div class="col-xs-4"></div>
+        </div>
+            
+    </div>        
+    </div>         
+          </div>
+          
+    
+          
+        <div class="col-xs-1"></div>      
+          
+      </div>
+      
+
+         
+      
+<!--  This is the player data section -->
+      
+      <div class="row section playerReport">
+      
+          <div class="row">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-10">
+          
+          <h1>Player Data</h1>
+          
+            <select id='choosePlayer'>
+  <option value="all">Choose Player</option>
+            </select>  
+          
+          <br>
+          <br>
+          
+          <table class="table">
+              <tr>
+                <td id="playerPosition">Position</td>
+
+                <td id="playerTeamLogo">Team Logo</td>
+            
+                  <td id="playerName">Name</td>
+              
+              </tr>
+          </table>
+                  
+        <img class="gambino" src="../images/childish-gambino.jpg" alt="childishGambino"> 
+                  
+        <table class="table">
+            <tr>
+                <td>Games</td>
+                <td>Goals</td>
+                <td>Assists</td>
+            </tr>          
+            <tr>
+                <td id="playerGames"></td>
+                <td id="playerGoals"></td>
+                <td id="playerAssists"></td>
+            </tr>
+            <tr>
+                <td>Offensive</td>
+                <td>Defensive</td>
+                <td>Dribling</td>
+            </tr>
+            
+            <tr>
+                <td id="playerOffensive"></td>
+                <td id="playerDefensive"></td>
+                <td id="playerDribbling"></td>
+            </tr>
+            
+            <tr>
+                <td id="playerFitness">Fitness</td>
+                <td id="playerGoalkeeping">Goalkeeping</td>
+                <td id="playerPassing">Passing</td>
+            </tr>
+            
+            <tr>
+                <td class="playerFitness"></td>
+                <td class="playerGoalkeeping"></td>
+                <td class="playerPassing"></td>
+            </tr>
+                        
+        </table>          
+      </div>
+    </div>
+    <div class="col-xs-1"></div>
+                  
+
+          
+      </div>
+      
+<!--    Now the team data section - WHICH IS STILL TO BE MADE-->
+      
+      <div class="row section teamReport">
+      
+      <div class="col-xs-1"></div>
+          
+    <div class="col-xs-10">
+          
+        <h1>Team Report</h1>
+          
+        <p>This page is not finished but it would contain detail of every team available. The login structure would ensure that coaches can see everything, parents can see any of their players (children) or teams and players would only be able to see their own team.<br><br> The sort of information it would include are total goals, average shooting stats, defensive stats and so on. It would also have section to show the full squad available for each team. This would be in the form of a drop down which would only have selection options for approrpiate teams (e.g. a childs for the child....all childrens for the parent and so on) </p>
+        
+          </div>      
+      <div class="col-xs-1"></div>
+          
+          
+      
+      </div>
+      
+      
+<!--      Then I want to put the fixtures and results. Starting with the results-->
+      
+      <div class="row section results">
+      
+  <div class="row">
+            
+             <div class="col-xs-1"></div>
+             
+             <div class="col-xs-10">
+    <h1>Results</h1>
+      <table class="table">
+<!--
+           <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                     
+                    </tr>
+                </thead>
+-->
+                <tbody id="fixturesAndResults">
+                    
+                </tbody>
+      </table>
+      </div>
+      
+      <div class="col-xs-1"></div>
+      </div>      
+      
+      </div>
+   
+<!--This is the fixtures section      -->
+  
+       <div class="row section fixtures">
+      
+    <div class="col-xs-1"></div>  
+           <div class="col-xs-10">  
+           
+           <h1>Fixtures</h1>
+           
+           <p>I might make a drop down here that picks team</p>
+           
+          
+          <table class="table table-striped">
+         
+              <thead>
+                <tr>
+                  <td>Match</td>
+<!--                  <td>Away</td>-->
+                  <td>Date</td>
+                  <td>Time</td>
+                  <td>Location</td>
+                    </tr>
+              </thead>
+             
+            <tbody id="comingFixtures">
+<!--
+            <tr id="fixturesRow">
+                <td id="match"></td>
+              <td id="nextGameDate2"></td>
+               <td id="nextGameTime2"></td>
+              <td id="nextGameLocation"></td>
+              </tr>
+-->
+             </tbody>   
+          </table>
+        </div>
+        <div class="col-xs-1"></div>   
+           
+           </div>
+      
+<!--This is the match reports section      -->
+      
+      <div class="row section matchReports">
+        <div class="row">
+            
+             <div class="col-xs-1"></div>
+             
+             <div class="col-xs-10">
+    <h1>Match Report</h1>
+                 
+         <div class="row pickGame">
+                
+           <select id='chooseGame' onchange="gameSelector()">
+  <option value="all">Pick a game:</option>
+            </select>  
+                 
+                 </div>
+        
+
+                 
+                 <br>
+            
+        <table class="table" id="matchReportTable">
+             <tr>
+                 <td id="homeScore">Home Score</td>
+                 <td id="awayScore">Away Score</td>
+            </tr>
+            <tr>
+                <td>Home Scorers</td>
+                <td>Away Scorers</td>
+            </tr>
+            <tr>
+                <td id="homeScorers"></td>
+                <td id="awayScorers"></td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>Location</td>
+            </tr>
+              <tr>
+                <td id="gameDate"></td>
+                <td id="gameLocation"></td>
+            </tr>
+            <tr>
+                <td>HOME TEAM</td>
+                <td>AWAY TEAM</td>
+            </tr>
+             <tr>
+                <td id="homeTeamLogo"></td>
+                <td id="awayTeamLogo"></td>
+            </tr>
+            <tr>
+                <td id="homeGK"></td>
+                <td id="awayGK"></td>
+            </tr>
+            <tr>
+                <td id="homeDef1"></td>
+                <td id="awayDef1"></td>
+            </tr>
+            <tr>
+                <td id="homeDef2"></td>
+                <td id="awayDef2"></td>
+            </tr>
+            <tr>
+                <td id="homeDef3"></td>
+                <td id="awayDef3"></td>
+            </tr>
+            <tr>
+                <td id="homeDef4"></td>
+                <td id="awayDef4"></td>
+            </tr>
+             <tr>
+                <td id="homeMid1"></td>
+                <td id="awayMid1"></td>
+            </tr>
+             <tr>
+                <td id="homeMid2"></td>
+                <td id="awayMid2"></td>
+            </tr>
+             <tr>
+                <td id="homeMid3"></td>
+                <td id="awayMid3"></td>
+            </tr>
+            <tr>
+                <td id="homeMid4"></td>
+                <td id="awayMid4"></td>
+            </tr>
+            <tr>
+                <td id="homeAtt1"></td>
+                <td id="awayAtt1"></td>
+            </tr>
+            <tr>
+                <td id="homeAtt2"></td>
+                <td id="awayAtt2"></td>
+            </tr>
+            
+                 </table>         
+             
+             </div>
+             
+             <div class="col-xs-1"></div>
+      </div>
+      </div>
+      
+      
+<!--      Then this is the league table section-->
+      
+      <div class="row section leageueTable">
+         <div class="row">
+            
+             <div class="col-xs-1"></div>
+             
+             <div class="col-xs-10">
+    <h1>NYSL League Table</h1>
+      <table class="table table-hover">
+           <thead>
+                    <tr>
+                        <th>Team</th>
+                        <th>G</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>GS</th>
+                        <th>GA</th>
+                        <th>P</th>
+                    </tr>
+                </thead>
+                <tbody id="leagueTable">
+                    
+                </tbody>
+      </table>
+      </div>
+      
+      <div class="col-xs-1"></div>
+      </div>
+    </div>
+      
+        
+<!--This is the about NYSL section          -->
+          
+      <div class="row section about">
+          <div class="row">
+            
+             <div class="col-xs-1"></div>
+             
+             <div class="col-xs-10">
+    <h1>About NYSL</h1>
+
+                     <div id="bodycontent">
+    <h3>Mission</h3>
+    <p class="indent">To support young athletes living in Chicago's northside neighborhoods, who have an interest in learning and playing soccer, with opportunities to learn and practice skills related to the game of soccer, specifically those skills around team cooperation and good sportsmanship.</p>
+    
+    <h3>Vision</h3>
+    <p class="indent">The Northside Youth Soccer League aspires to develop strong, well-rounded, and mindful athletes through the building of character, self-discipline, and leadership.</p>
+    
+    <h3>General Information</h3>
+    <p class="indent">The Northside Youth Soccer League was established in 1996 to provide athletes residing in Chicago's northside neighborhoods an environment in which to learn and play soccer. To be a member of NYSL, you must be between the ages of 4 - 12 and reside in a Chicago northside neighborhood. NYSL is run by a small full-time staff, and relies on the generous volunteer time of parents and previous league members.</p>
+    </div>
+      </div>
+      
+      <div class="col-xs-1"></div>
+      </div>
+      </div>
+      
+<!--Then I need the player performance section.       -->
+      
+  <div class="row section playerPerformanceData">    
+    
+      <div class="col-xs-1"></div>  
+      
+      <div class="col-xs-10">
+      
+      <h1>Player Performance Data</h1>
+      
+      
+      
+      <p align="center">This section is still to be made but would include drop downs that work out the top 10 students based on any of the key statistics of offensive, defensive and so on. It would also have goals vs appearances which is what it would start on</p>
+      
+      <table class="table playerformanceTable">
+      <thead>
+      <tr>
+          <td>Name</td>
+          <td>Practices or Games</td>
+          <td>Percentage or Goals</td>
+        </tr>
+          </thead>
+       <tbody></tbody>   
+      
+      </table>
+     
+          </div>
+      <div class="col-xs-1"></div>  
+      
+    </div>      
+      
+      
+<!--      Then I'm going to make the login page-->
+      
+      <div class="row section loginPage">
+      
+      <div class="container">
+	<div class="login-container">
+            <div id="output"></div>
+            <div class="avatar"></div>
+            <div class="form-box">
+                <form action="login" method="login">
+                    <input name="user" type="text" placeholder="email">
+                    <input type="password" placeholder="password">
+                    <button class="btn btn-info btn-block login" type="submit" id="submit">Login</button>
+                </form>
+            </div>
+        </div>
+      </div>  
+
+          
+<!-- Don't think I need this but not 100% sure right now - DELETE PRE SUBMISSION
+
+              <div class="row section loginPage centerDiv">
+              <div class="col-xs-6"><p>register</p></div>
+              <div class="col-xs-6"><p>forgot password</p></div>
+-->
+              
+          </div>
+         
+          
+<!--   Don't think I need this but not 100% sure right now - DELETE PRE SUBMISSION
+
+</div>-->
+      
+      
+      
+<!--    Now the parent signup page  -->
+      
+    <div class="row section parentSignUp">
+          
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+        
+        <h1>Register with NYSL</h1>    
+            
+          
+   <div class="form-group">
+    <label for="first_name">First Name:</label>
+    <input type="text" class="form-control" id="first_name">
+  </div> 
+  <div class="form-group">
+    <label for="last_name">Surname:</label>
+    <input type="text" class="form-control" id="last_name">
+  </div>
+                
+ <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox"> I would like to receive notifications from NYSL</label>
+  </div>
+  <button type="submit" class="btn btn-default" id="signUpSubmit">Submit</button>
+
+        
+          <div class="col-xs-1"></div>
+        
+    </div>
+        
+         </div>  
+          
+      
+      
+
+   
+
+      
+
+
+
+       
+
+     
+
+      
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyASDdiUThsLf5QSdVvf2SJNxs1XJoOL1fI",
+    authDomain: "bens-nysl-web-app.firebaseapp.com",
+    databaseURL: "https://bens-nysl-web-app.firebaseio.com",
+    projectId: "bens-nysl-web-app",
+    storageBucket: "bens-nysl-web-app.appspot.com",
+    messagingSenderId: "345848193009"
+  };
+  firebase.initializeApp(config);
+</script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+   
+     
+      <script src='nysl_data_made_by_ben.js'></script>  
+      
+    <script src='array_calculator.js'></script> 
+      
+      <script src="main.js"></script>
+      
+      <script src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
+      
+  </body>
+</html>
