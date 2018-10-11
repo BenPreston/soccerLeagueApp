@@ -476,130 +476,158 @@ appendNextMatchData();
 
 // 4. Player Performance and Statistics
 
-// This first function on calculatingPlayerPerformanceData works out exactly how each player has performed in terms of offensive, defensive, dribling and so on.
+// The aim of this function is when you select a player from the drop down you take that playerID and first select their position, team logo and name; then I need to go through the match reports to get the number of games, goals and assists; finally I need to go through the coaching reports and calculate 
 
-function calculatePlayerPerformanceData(playerID) {
+document.getElementById("choosePlayer").addEventListener("change", function(){
     
-    
-    // Offensive Data
-    var offensiveDrills = 0;
-    var offensiveAttempts = 0;
-    var offensiveCompleted = 0;
-    
-    // Defensive Data
-    var defensiveDrills = 0;
-    var defensiveAttempts = 0;
-    var defensiveCompleted = 0;
-    
-    // Fitness Data
-    var fitnessDrills = 0;
-    var fitnessAttempts = 0;
-    var fitnessCompleted = 0;
-    
-    //  Goalkeeping Data
-    var goalkeepingDrills = 0;
-    var goalkeepingAttempts = 0;
-    var goalkeepingCompleted = 0;
-    
-    // passing Data
-    var passingDrills = 0;
-    var passingAttempts = 0;
-    var passingCompleted = 0;
-    
-    // dribbling Data
-    var dribblingDrills = 0;
-    var dribblingAttempts = 0;
-    var dribblingCompleted = 0;
-    
-    var stats = data.coachingStatistics;
-    
-    for (i=0; i < stats.length; i++) {
-        
-        if (stats[i].playerID == playerID) {
-            
-            if (stats[i].typeOfDrill == "OFFENSIVE") {
-                
-                offensiveDrills += 1;
-         
-                offensiveAttempts += stats[i].attemps;
-                
-                offensiveCompleted += stats[i].completed
-                
-            }
-            
-            if (stats[i].typeOfDrill == "FITNESS") {
-                
-                fitnessDrills += 1;
-         
-                fitnessAttempts += stats[i].attemps;
-                
-                fitnessCompleted += stats[i].completed
-                
-            }
+    showPlayerDetails(document.getElementById("choosePlayer").value);
+});
 
-            if (stats[i].typeOfDrill == "GOALKEEPING") {
-                
-                fitnessDrills += 1;
-         
-                goalkeepingAttempts += stats[i].attemps;
-                
-                goalkeepingCompleted += stats[i].completed
-                
-            }
+function showPlayerDetails(player) {
+    
+    // Go through the list of players
+    
+    for (i=0; i < data.children.length; i++) {
+       
+        if (data.children[i].childID == player) {
+           
+ document.getElementById("playerPosition").innerHTML = data.children[i].position;
             
-           if (stats[i].typeOfDrill == "DEFENSIVE") {
-                
-                fitnessDrills += 1;
-         
-                defensiveAttempts += stats[i].attemps;
-                
-                defensiveCompleted += stats[i].completed
-                
-            }
+            document.getElementById("playerTeamLogo").innerHTML = data.children[i].team;
             
-          if (stats[i].typeOfDrill == "DRIBBLING") {
-                
-                fitnessDrills += 1;
-         
-                dribblingAttempts += stats[i].attemps;
-                
-                dribblingCompleted += stats[i].completed
-                
-            }
+             document.getElementById("playerName").innerHTML = data.children[i].first_name + " " + data.children[i].last_name;
             
-             if (stats[i].typeOfDrill == "PASSING") {
-                
-                fitnessDrills += 1;
-         
-                passingAttempts += stats[i].attemps;
-                
-                passingCompleted += stats[i].completed
-                
-            }    
         }
-        
-    } 
+    }
     
-         var ofDrill = document.getElementById("playerOffensive");
-    
-    ofDrill.innerHTML = "Out of " + offensiveDrills + " attempts " + (offensiveCompleted / offensiveAttempts).toFixed(2) +"% success rate";
-    
-             var defDrill = document.getElementById("playerDefensive");
-    
-    defDrill.innerHTML = "Out of " + defensiveDrills + " attempts " + (defensiveCompleted / defensiveAttempts).toFixed(2) +"% success rate";
-    
-                var dribDrill = document.getElementById("playerDribbling");
-    
-    dribDrill.innerHTML = "Out of " + dribblingDrills + " attempts " + (dribblingCompleted / dribblingAttempts).toFixed(2) +"% success rate";
+    // And if the players name selected (i.e. player) is equal to my user here (player) then put position logo and name in the inner HTML
     
 }
 
+// THIS WAS THE ORIGINAL FUNCTION I WROTE BUT I'M REWRITING IT ABOVE This first function on calculatingPlayerPerformanceData works out exactly how each player has performed in terms of offensive, defensive, dribling and so on.
 
-// This is supposed to fix the data into the table but I don't think it works and I need to look at it tomorrow PROBLEM TO BE SOLVED - BARG
+//function calculatePlayerPerformanceData(playerID) {
+//        
+//    // Offensive Data
+//    var offensiveDrills = 0;
+//    var offensiveAttempts = 0;
+//    var offensiveCompleted = 0;
+//    
+//    // Defensive Data
+//    var defensiveDrills = 0;
+//    var defensiveAttempts = 0;
+//    var defensiveCompleted = 0;
+//    
+//    // Fitness Data
+//    var fitnessDrills = 0;
+//    var fitnessAttempts = 0;
+//    var fitnessCompleted = 0;
+//    
+//    //  Goalkeeping Data
+//    var goalkeepingDrills = 0;
+//    var goalkeepingAttempts = 0;
+//    var goalkeepingCompleted = 0;
+//    
+//    // passing Data
+//    var passingDrills = 0;
+//    var passingAttempts = 0;
+//    var passingCompleted = 0;
+//    
+//    // dribbling Data
+//    var dribblingDrills = 0;
+//    var dribblingAttempts = 0;
+//    var dribblingCompleted = 0;
+//    
+//    var stats = data.coachingStatistics;
+//    
+//    for (i=0; i < stats.length; i++) {
+//        
+//        if (stats[i].playerID == playerID) {
+//            
+//            if (stats[i].typeOfDrill == "OFFENSIVE") {
+//                
+//                offensiveDrills += 1;
+//         
+//                offensiveAttempts += stats[i].attemps;
+//                
+//                offensiveCompleted += stats[i].completed
+//                
+//            }
+//            
+//            if (stats[i].typeOfDrill == "FITNESS") {
+//                
+//                fitnessDrills += 1;
+//         
+//                fitnessAttempts += stats[i].attemps;
+//                
+//                fitnessCompleted += stats[i].completed
+//                
+//            }
+//
+//            if (stats[i].typeOfDrill == "GOALKEEPING") {
+//                
+//                fitnessDrills += 1;
+//         
+//                goalkeepingAttempts += stats[i].attemps;
+//                
+//                goalkeepingCompleted += stats[i].completed
+//                
+//            }
+//            
+//           if (stats[i].typeOfDrill == "DEFENSIVE") {
+//                
+//                fitnessDrills += 1;
+//         
+//                defensiveAttempts += stats[i].attemps;
+//                
+//                defensiveCompleted += stats[i].completed
+//                
+//            }
+//            
+//          if (stats[i].typeOfDrill == "DRIBBLING") {
+//                
+//                fitnessDrills += 1;
+//         
+//                dribblingAttempts += stats[i].attemps;
+//                
+//                dribblingCompleted += stats[i].completed
+//                
+//            }
+//            
+//             if (stats[i].typeOfDrill == "PASSING") {
+//                
+//                fitnessDrills += 1;
+//         
+//                passingAttempts += stats[i].attemps;
+//                
+//                passingCompleted += stats[i].completed
+//                
+//            }    
+//        }
+//        
+//    } 
+//    
+//         var ofDrill = document.getElementById("playerOffensive");
+//    
+//    ofDrill.innerHTML = "Out of " + offensiveDrills + " attempts " + (offensiveCompleted / offensiveAttempts).toFixed(2) +"% success rate";
+//    
+//             var defDrill = document.getElementById("playerDefensive");
+//    
+//    defDrill.innerHTML = "Out of " + defensiveDrills + " attempts " + (defensiveCompleted / defensiveAttempts).toFixed(2) +"% success rate";
+//    
+//                var dribDrill = document.getElementById("playerDribbling");
+//    
+//    dribDrill.innerHTML = "Out of " + dribblingDrills + " attempts " + (dribblingCompleted / dribblingAttempts).toFixed(2) +"% success rate";
+//    
+//}
 
-var dropDown = document.getElementById("choosePlayer").addEventListener("change", function() {
-    playerSelector(document.getElementById("choosePlayer").value);
-});
+
+
+//// This is supposed to fix the data into the table but I don't think it works and I need to look at it tomorrow PROBLEM TO BE SOLVED - BARG
+//
+//var dropDown = document.getElementById("choosePlayer").addEventListener("change", function() {
+//    playerSelector(document.getElementById("choosePlayer").value);
+//});
 
 
 function createPlayerDropDown() {
@@ -758,4 +786,3 @@ function fixtureCreator() {
 
 fixtureCreator();
 
-calculatePlayerPerformanceData(200);
